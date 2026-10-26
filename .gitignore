@@ -59,3 +59,9 @@ __pycache__/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Tauri/codegen and local development-only scratch files
+src-tauri/gen/
+*.d.mts
+/patch_app.py
+/*_DIAGNOSIS_*.md

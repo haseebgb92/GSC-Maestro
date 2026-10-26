@@ -1,0 +1,1 @@
+{"compilerOptions":{"target":"ES2022","lib":["ES2022","DOM"],"module":"ESNext","moduleResolution":"Bundler","skipLibCheck":true,"strict":true,"allowImportingTsExtensions":true,"noEmit":true,"types":["vite/client"]},"include":["mcp-ui/**/*.ts","vite.mcp.config.ts"]}

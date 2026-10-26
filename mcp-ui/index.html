@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>GSC Maestro · Search Intelligence</title></head>
+<body>
+<main class="maestro" aria-label="GSC Maestro visual analytics">
+  <header class="top">
+    <div class="brand"><div class="brand-icon" id="maestro-mark" aria-hidden="true"></div><div><div class="brand-name">GSC <span>Maestro</span></div><div class="brand-kicker">SEARCH INTELLIGENCE</div></div></div>
+    <div class="engine-switch"><button id="engine-google" class="chosen" type="button">Google</button><button id="engine-bing" type="button">Bing</button><button id="engine-yandex" type="button">Yandex</button><span class="source-pill" id="engine-name"><i></i> GOOGLE SEARCH CONSOLE</span></div>
+  </header>
+  <section class="selector-bar">
+    <label class="site-select-wrap"><span>PROPERTY</span><select id="site-select" aria-label="Search Console property"><option>Loading properties...</option></select></label>
+    <div class="date-display"><span>REPORTING PERIOD</span><strong id="date-range">—</strong></div>
+    <button id="sync-now" class="refresh sync-now" type="button" title="Request a read-only sync for the selected engine on your Linux machine">⇅ <span>Sync selected engine</span></button>
+    <button id="refresh" class="refresh" type="button" title="Refresh data from local Google snapshot" aria-label="Reload saved Google snapshot">↻ <span>Reload</span></button>
+  </section>
+  <div class="sync-status-strip"><span class="sync-led"></span><span id="sync-health">Checking automatic sync…</span><button type="button" id="sync-check">Check sync status</button></div>
+  <form class="site-search" id="website-form"><input id="website-input" type="text" placeholder="Analyze another website — https://example.com" aria-label="Website URL" required><button type="submit">Analyze site →</button></form>
+  <div id="notice" class="notice" role="status">Waiting for synchronized Search Console data…</div>
+  <section id="public-dashboard" hidden>
+   <section class="card public-top"><div><span class="public-label">PUBLIC WEBSITE CRAWL · UNCONNECTED DOMAIN</span><h2 id="public-domain">Website</h2><p id="public-meta"></p></div><div class="public-score"><strong id="public-score">—</strong><span>/ 100</span><small>Heuristic on-page score</small></div></section>
+   <div class="public-stats"><div class="card"><span>Pages crawled</span><strong id="public-pages">—</strong></div><div class="card"><span>Detected issues</span><strong id="public-issues">—</strong></div><div class="card"><span>Missing alt text</span><strong id="public-alt">—</strong></div><div class="card"><span>Pages with JSON-LD</span><strong id="public-schema">—</strong></div></div>
+   <section class="card"><div class="section-head"><strong>Findings by severity</strong><small>Diagnostic checks only</small></div><div class="public-bars" id="public-bars"></div></section>
+   <section class="card"><div class="section-head"><strong>Issue concentration and page health</strong><small>Observed findings only</small></div><div id="public-insights" class="public-insights"></div></section><section class="card"><div class="section-head"><strong>Audited pages</strong><small id="public-count"></small></div><div class="table-wrap"><table><thead><tr><th>Page</th><th>Score</th><th>Status</th><th>Words</th><th>H1s</th><th>Issues</th></tr></thead><tbody id="public-table"></tbody></table></div></section>
+   <section class="card"><div class="section-head"><strong>Priority recommendations</strong><small>Observed findings</small></div><div id="public-findings"></div></section>
+   <p class="footer">No Google Search Console access was used. Rankings, clicks, impressions and indexed status are unavailable for unconnected websites. This is a bounded public crawl, not a complete site audit.</p>
+  </section>
+  <section id="dashboard" hidden>
+    <div class="kpis">
+      <article class="kpi"><span>Total clicks</span><strong id="kpi-clicks">—</strong><small>Google organic search</small><div class="kpi-symbol blue">↗</div></article>
+      <article class="kpi"><span>Impressions</span><strong id="kpi-impressions">—</strong><small>Google search results</small><div class="kpi-symbol violet">◌</div></article>
+      <article class="kpi"><span>Average CTR</span><strong id="kpi-ctr">—</strong><small>Clicks ÷ impressions</small><div class="kpi-symbol teal">◎</div></article>
+      <article class="kpi"><span>Average position</span><strong id="kpi-position">—</strong><small>Impression-weighted</small><div class="kpi-symbol amber">≋</div></article>
+    </div>
+    <section class="card chart-card">
+      <div class="section-title"><div><h2>Search performance</h2><p>Daily trend · finalized GSC data</p></div><div class="chart-filters" id="chart-filters" role="group" aria-label="Chart metric"><button class="chart-filter active" data-metric="dual" type="button">Clicks + Impressions</button><button class="chart-filter" data-metric="clicks" type="button">Clicks</button><button class="chart-filter" data-metric="impressions" type="button">Impressions</button><button class="chart-filter" data-metric="ctrPercent" type="button">CTR</button><button class="chart-filter" data-metric="position" type="button">Position</button></div></div>
+      <div class="chart-legend"><span id="chart-legend"></span><label><input id="smooth" type="checkbox" checked> Show 7-day average</label></div><div class="chart-holder" style="position:relative"><div id="hover-card" class="hover-card" hidden></div><svg id="trend" viewBox="0 0 780 250" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Daily Search Console trend"></svg></div>
+      <div class="chart-summary" id="chart-summary"></div><div id="comparison-summary" class="comparison-summary"></div>
+    </section><section class="card intelligence-card"><div class="section-title"><div><h2>Visibility distribution</h2><p>Query ranking buckets and landing-page impression concentration · from returned GSC rows</p></div></div><div id="ranking-heatmap" class="ranking-heatmap"></div></section>
+    <section class="card data-card">
+      <div class="section-title"><div><h2>Explore search data</h2><p id="row-description">Queries, landing pages and ranking opportunities</p></div><div class="table-actions"><input id="filter" type="search" placeholder="Filter rows…" aria-label="Filter search data"><button id="export" type="button" title="Export visible table to CSV">Export CSV ↗</button></div></div>
+      <div class="tabs" role="tablist" aria-label="Search data tables"><button role="tab" aria-selected="true" class="tab active" data-tab="queries">Queries <span id="qcount"></span></button><button role="tab" aria-selected="false" class="tab" data-tab="pages">Pages <span id="pcount"></span></button><button role="tab" aria-selected="false" class="tab" data-tab="opportunities">Opportunities <span id="ocount"></span></button></div>
+      <div class="scroll-table"><table><thead><tr><th><button data-sort="key">Search term / page <span>↕</span></button></th><th class="num"><button data-sort="clicks">Clicks <span>↕</span></button></th><th class="num"><button data-sort="impressions">Impressions <span>↕</span></button></th><th class="num"><button data-sort="ctrPercent">CTR <span>↕</span></button></th><th class="num"><button data-sort="position">Position <span>↕</span></button></th></tr></thead><tbody id="rows"></tbody></table></div>
+      <div class="pagination"><span id="row-count">—</span><div><button id="prev" type="button" aria-label="Previous page">← Prev</button><span id="page">1/1</span><button id="next" type="button" aria-label="Next page">Next →</button></div></div>
+    </section>
+    <footer><div><span class="dot"></span><span id="freshness">Awaiting sync</span></div><div id="caveat">GSC may omit anonymized queries and has reporting delays</div></footer>
+  </section>
+</main>
+<script type="module" src="./main.ts"></script>
+</body></html>

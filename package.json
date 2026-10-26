@@ -1,0 +1,39 @@
+{
+  "name": "gsc-maestro",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc -b && vite build",
+    "desktop": "tauri dev",
+    "desktop:build": "npm run mcp:bundle && tauri build --bundles deb",
+    "test": "node --test tests/*.test.mjs",
+    "mcp": "node --no-warnings --experimental-sqlite mcp/server.mjs",
+    "mcp:bundle": "npm run mcp:view && mkdir -p src-tauri/resources && esbuild mcp/server.mjs --bundle --platform=node --format=esm --target=node22 --banner:js='import {createRequire} from \"node:module\"; const require=createRequire(import.meta.url);' --outfile=src-tauri/resources/gsc-maestro-mcp.mjs && esbuild mcp/http.mjs --bundle --platform=node --format=esm --target=node22 --banner:js='import {createRequire} from \"node:module\"; const require=createRequire(import.meta.url);' --outfile=src-tauri/resources/gsc-maestro-http.mjs && esbuild mcp/crawl-cli.mjs --bundle --platform=node --format=esm --target=node22 --banner:js='import {createRequire} from \"node:module\"; const require=createRequire(import.meta.url);' --outfile=src-tauri/resources/gsc-maestro-crawl.mjs && esbuild mcp/bing-cli.mjs --bundle --platform=node --format=esm --target=node22 --banner:js='import {createRequire} from \"node:module\"; const require=createRequire(import.meta.url);' --outfile=src-tauri/resources/gsc-maestro-bing.mjs && esbuild mcp/yandex-cli.mjs --bundle --platform=node --format=esm --target=node22 --banner:js='import {createRequire} from \"node:module\"; const require=createRequire(import.meta.url);' --outfile=src-tauri/resources/gsc-maestro-yandex.mjs && cp mcp-dist/mcp-ui/index.html src-tauri/resources/maestro-overview.html && cp src-tauri/icons/icon.png src-tauri/resources/icon.png && cp mcp-dist/mcp-ui/index.html mcp/maestro-overview.html",
+    "mcp:view": "vite build --config vite.mcp.config.ts",
+    "mcp:http": "node --no-warnings --experimental-sqlite mcp/http.mjs",
+    "security:check": "node scripts/security-check.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/ext-apps": "^1.7.5",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@tauri-apps/api": "^2.12.1",
+    "cheerio": "^1.2.0",
+    "ipaddr.js": "^2.5.0",
+    "jspdf": "^4.2.1",
+    "lucide-react": "^0.468.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "robots-parser": "^3.0.1",
+    "vite-plugin-singlefile": "^2.3.4"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.12.1",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^5.1.1",
+    "typescript": "^5.8.3",
+    "vite": "^6.4.1"
+  }
+}

@@ -1,0 +1,61 @@
+# Build artifacts / dependencies
+node_modules/
+dist/
+mcp-dist/
+src-tauri/target/
+src-tauri/resources/
+mcp/maestro-overview.html
+mcp/overview.html
+*.tsbuildinfo
+*.deb
+*.rpm
+*.AppImage
+*.exe
+*.msi
+*.dmg
+
+# Local credentials, OAuth clients/tokens, configuration
+.env
+.env.*
+!.env.example
+*oauth*app*.json
+*oauth*client*.json
+*credentials*.json
+*secret*.json
+*token*.json
+yandex-oauth-app.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# Runtime data and client-specific analytics
+reports/
+ai-exports/
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+*.db
+*.db-*
+*.csv
+*.log
+*.pid
+*.exit
+*.tmp
+*.bak
+*.backup
+
+# Temporary test/generated files
+tests/.*
+__pycache__/
+*.pyc
+.pytest_cache/
+.cache/
+
+# Editor/OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

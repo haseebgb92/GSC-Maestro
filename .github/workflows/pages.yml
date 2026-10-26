@@ -1,0 +1,36 @@
+name: GSC Maestro website
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: gsc-maestro-pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify site assets
+        run: |
+          test -s docs/index.html
+          test -s docs/site.css
+          test -s docs/assets/gsc-maestro-dashboard.png
+          test -s docs/assets/gsc-maestro-icon.png
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - name: Publish GSC Maestro website
+        id: deploy
+        uses: actions/deploy-pages@v4

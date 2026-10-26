@@ -1,7 +1,19 @@
-# GSC Maestro
-
 <p align="center"><img src="GSC-Maestro-ChatGPT-icon.png" alt="GSC Maestro icon" width="104" /></p>
+<h1 align="center">GSC Maestro</h1>
 <p align="center"><strong>Local-first search intelligence for Google Search Console, Bing Webmaster, Yandex Webmaster, technical auditing, and AI search reports.</strong></p>
+<p align="center">
+<a href="https://github.com/haseebgb92/GSC-Maestro/actions/workflows/verify.yml"><img alt="Build and security status" src="https://github.com/haseebgb92/GSC-Maestro/actions/workflows/verify.yml/badge.svg"></a>
+<a href="LICENSE"><img alt="MIT license badge" src="https://img.shields.io/github/license/haseebgb92/GSC-Maestro?style=flat-square"></a>
+<a href="#build-and-run-locally"><img alt="Linux and MCP badge" src="https://img.shields.io/badge/platform-Linux%20%7C%20MCP-1761b1?style=flat-square"></a>
+</p>
+<p align="center"><a href="https://haseebgb92.github.io/GSC-Maestro/"><strong>Website</strong></a> · <a href="#build-and-run-locally">Get started</a> · <a href="https://github.com/haseebgb92/GSC-Maestro/issues">Issues</a></p>
+
+## Application preview
+
+<a href="https://haseebgb92.github.io/GSC-Maestro/"><img src="docs/assets/gsc-maestro-dashboard.png" alt="GSC Maestro search overview dashboard with fictional example performance data" width="100%"></a>
+
+<sub>Actual published-source app captured in an isolated browser with built-in illustrative sample data. No connected websites or client properties.</sub>
+
 
 > **Bring your own accounts and credentials.** Nothing in this GitHub repository contains a developer's Google, Bing, Yandex, or ChatGPT access token, connected websites, search data, or private deployment configuration.
 

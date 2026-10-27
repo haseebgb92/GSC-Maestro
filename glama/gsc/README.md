@@ -22,6 +22,12 @@ node --test glama/gsc/container-smoke.test.mjs
 
 Tests start a real MCP container with no network, read-only root filesystem, no host mounts, all capabilities dropped, and no-new-privileges.
 
-## Glama build and release
+## Verified hosted release
 
-On your claimed GSC Maestro Glama listing, open the Dockerfile admin page, select repository root and Dockerfile, and build with **no credentials or environment secrets**. Verify the tool catalog contains only the four metrics utilities. Publish only if the hosted edition is accurately labelled as a **public metrics-only demo**; the desktop product does not become a cloud-connected Search Console service.
+**v0.1.0 was published on Glama on October 27, 2026**, using the restricted `glama/gsc/server.mjs` entry point. Glama's container build test successfully started the MCP server and identified exactly the four public metrics utilities. The published release's average Tool Definition Quality Score was **4.0/5** across those four tools.
+
+[Public Glama listing](https://glama.ai/mcp/servers/haseebgb92/GSC-Maestro) · [Glama release administration](https://glama.ai/mcp/servers/haseebgb92/GSC-Maestro/admin/releases)
+
+For future updates, synchronize the repository in the Glama admin, choose the repository's root build context, then enter build step `npm install --prefix glama/gsc --omit=dev --ignore-scripts --no-audit --no-fund` and startup command `["mcp-proxy","--","node","glama/gsc/server.mjs"]` without environment secrets. Test before publishing any replacement release.
+
+The hosted edition is a **public metrics-only demo**, not a cloud-connected Search Console service. The complete desktop MCP server remains separately installed and user-authorized.

@@ -17,9 +17,11 @@
 
 > **Bring your own accounts and credentials.** Nothing in this GitHub repository contains a developer's Google, Bing, Yandex, or ChatGPT access token, connected websites, search data, or private deployment configuration.
 
-## Glama public metrics demo
+## GSC Maestro MCP on Glama
 
-A separate [restricted Glama edition](glama/gsc/README.md) exposes only CTR calculation, period comparisons and metric explanations on numbers supplied in the request. **It does not access Google Search Console, Bing, Yandex, local client data or desktop credentials.** The full MCP server requires your own authorized GSC Maestro desktop setup.
+**[Glama release v0.1.0](https://glama.ai/mcp/servers/haseebgb92/GSC-Maestro) was officially published October 27, 2026.** Glama's container build and MCP inspection passed, exposing four read-only tools: capability disclosure, CTR calculation, reporting-period comparison, and search-metric explanations. Its tool definition quality score was **4.0/5** across all four tools at publication.
+
+This [restricted metrics-only hosted edition](glama/gsc/README.md) operates exclusively on non-sensitive, user-supplied numeric aggregates. **It cannot query Google Search Console, Bing, Yandex or client properties, and has no OAuth credentials, local SQLite database, or desktop access.** Use your separately installed and authorized GSC Maestro desktop/MCP server for actual provider data.
 
 ## Features
 

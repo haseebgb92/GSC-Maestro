@@ -29,7 +29,7 @@ const tools = [
    inputSchema:input({}),annotations}
 ];
 const reply = obj => ({content:[{type:'text',text:JSON.stringify(obj,null,2)}]});
-const fail = msg => ({isError:true,content:[{type:'text',text:msg}]});
+const fail = msg => ({isError:true,content:[{type:'text',text:JSON.stringify({error:msg})}]});
 const round = x => Math.round((x+Number.EPSILON)*100)/100;
 const ctr = (clicks,impressions) => impressions===0 ? null : round(100*clicks/impressions);
 const delta = (current,previous) => previous===0 ? null : round((current-previous)*100/previous);

@@ -17,6 +17,10 @@
 
 > **Bring your own accounts and credentials.** Nothing in this GitHub repository contains a developer's Google, Bing, Yandex, or ChatGPT access token, connected websites, search data, or private deployment configuration.
 
+## Glama public metrics demo
+
+A separate [restricted Glama edition](glama/gsc/README.md) exposes only CTR calculation, period comparisons and metric explanations on numbers supplied in the request. **It does not access Google Search Console, Bing, Yandex, local client data or desktop credentials.** The full MCP server requires your own authorized GSC Maestro desktop setup.
+
 ## Features
 
 | Area | Capabilities |

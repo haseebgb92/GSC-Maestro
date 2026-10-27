@@ -1,0 +1,35 @@
+name: GSC Maestro hosted public metrics container
+on:
+  push:
+    branches: [main]
+    paths:
+      - Dockerfile
+      - .dockerignore
+      - glama/**
+      - glama.json
+      - .github/workflows/glama-container.yml
+  pull_request:
+    paths:
+      - Dockerfile
+      - .dockerignore
+      - glama/**
+      - glama.json
+      - .github/workflows/glama-container.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  metrics-demo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install test SDK only
+        run: npm install --prefix glama/gsc --omit=dev --ignore-scripts --no-audit --no-fund
+      - name: Build credentials-free container
+        run: docker build -t gsc-maestro:glama-public .
+      - name: Verify real MCP metrics and no live account access
+        run: node --test glama/gsc/container-smoke.test.mjs

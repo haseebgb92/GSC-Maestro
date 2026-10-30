@@ -6,6 +6,8 @@
 <a href="LICENSE"><img alt="MIT license badge" src="https://img.shields.io/github/license/haseebgb92/GSC-Maestro?style=flat-square"></a>
 <a href="#build-and-run-locally"><img alt="Linux and MCP badge" src="https://img.shields.io/badge/platform-Linux%20%7C%20MCP-1761b1?style=flat-square"></a>
 </p>
+[![M8ven Score](https://m8ven.ai/badge/mcp/haseebgb92-gsc-maestro-5cy4w0?v=942ac21bbceaed3d2274ae428643cd0a)](https://m8ven.ai/mcp/haseebgb92-gsc-maestro-5cy4w0?s=readme)
+
 <p align="center"><a href="https://haseebgb92.github.io/GSC-Maestro/"><strong>Website</strong></a> · <a href="#build-and-run-locally">Get started</a> · <a href="https://github.com/haseebgb92/GSC-Maestro/issues">Issues</a></p>
 
 ## Application preview
